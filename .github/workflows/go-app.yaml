@@ -105,7 +105,7 @@ jobs:
       - name: Cloning the helm repo
         uses: GuillaumeFalourd/clone-github-repo-action@v2.3
         with:
-          owner: 'AmanPathak-DevOps'
+          owner: 'gokulabala'
           repository: 'go-app-devops'
           access-token: ${{ secrets.REPO_PAT }}
           branch: 'master'
@@ -120,24 +120,24 @@ jobs:
       - name: Pushing changes
         run: |
           cd go-app-devops
-          git config --global user.email "aman07pathak@gmail.com"
-          git config --global user.name "AmanPathak-DevOps"
+          git config --global user.email "gokul.ncrc@gmail.com"
+          git config --global user.name "gokulabala"
           git add values.yaml
           git commit -am "Updated values.yaml file"
           git push
 
-      
-  Slack-Notification:
+    
+  #Slack-Notification:
 
-      runs-on: ubuntu-latest
-      needs: [build, Code-Quality, Docker-Image-Push, Image-Scanning, Updating-helm-tags]
-      steps:
+   #   runs-on: ubuntu-latest
+    #  needs: [build, Code-Quality, Docker-Image-Push, Image-Scanning, Updating-helm-tags]
+     # steps:
       
-      - name: Slack Notification
-        uses: act10ns/slack@v1
-        with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-          channel: '#go-app-github-actions'
-        if: always()
+     # - name: Slack Notification
+     #   uses: act10ns/slack@v1
+     #   with:
+     #     status: ${{ job.status }}
+     #     steps: ${{ toJson(steps) }}
+     #     channel: '#go-app-github-actions'
+     #   if: always()
 
