@@ -78,6 +78,9 @@ jobs:
         path: .
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/go-port:${{github.run_id}}
+        
+    - name: Check Docker Images
+      run: docker images
 
   Image-Scanning:
       runs-on: ubuntu-latest
