@@ -44,7 +44,7 @@ jobs:
     - name: Run golang-lint
       uses: golangci/golangci-lint-action@v6
       with:
-        version: v1.57.0
+        version: v1.55.0
         
   Docker-Image-Push: 
     runs-on: ubuntu-latest
