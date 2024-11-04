@@ -41,6 +41,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Create golangci-lint config
+      run: |
+        echo 'linters:' > .golangci.yml
+        echo '  enable:' >> .golangci.yml
+        echo '    - golint' >> .golangci.yml
+        echo '    - errcheck' >> .golangci.yml
+        echo '    - staticcheck' >> .golangci.yml
+        echo 'issues:' >> .golangci.yml
+        echo '  exclude-dirs: [vendor]' >> .golangci.yml
+
     - name: Run golang-lint
       uses: golangci/golangci-lint-action@v6
       with:
@@ -52,7 +62,6 @@ jobs:
         skip-save-cache: false
         problem-matchers: false
         cache-invalidation-interval: 7
-        args: --exclude-use-default --issues.exclude-dirs=vendor
         
   Docker-Image-Push: 
     runs-on: ubuntu-latest
