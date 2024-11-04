@@ -118,16 +118,16 @@ jobs:
           access-token: ${{ secrets.REPO_PAT }}
           branch: 'master'
 
-      - name: Create values.yaml if it doesn't exist
-        run: |
-          if [ ! -f go-app-devops/values.yaml ]; then
-            echo "Creating placeholder values.yaml"
-            echo "tag: default" > go-app-devops/values.yaml
-          fi
+      #- name: Create values.yaml if it doesn't exist
+      #  run: |
+      #    if [ ! -f go-app-devops/values.yaml ]; then
+      #      echo "Creating placeholder values.yaml"
+      #      echo "tag: default" > go-app-devops/values.yaml
+      #    fi
 
       - name: Updating values in helm
         run: |
-          cd go-app-devops
+          cd go-app-devops/charts
           ls
           sed -i "s/tag: .*/tag: ${GITHUB_RUN_ID}/" values.yaml
 
