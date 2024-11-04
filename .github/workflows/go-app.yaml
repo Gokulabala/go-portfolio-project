@@ -52,7 +52,7 @@ jobs:
         skip-save-cache: false
         problem-matchers: false
         cache-invalidation-interval: 7
-        args: --exclude-use-default
+        args: --exclude-use-default --skip-dirs=vendor
         
   Docker-Image-Push: 
     runs-on: ubuntu-latest
