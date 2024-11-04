@@ -136,7 +136,7 @@ jobs:
 
       - name: Pushing changes
         run: |
-          cd go-app-devops
+          cd go-app-devops/charts
           git config --global user.email "gokul.ncrc@gmail.com"
           git config --global user.name "gokulabala"
           git add values.yaml
