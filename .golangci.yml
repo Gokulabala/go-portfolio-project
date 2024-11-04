@@ -1,0 +1,7 @@
+linters:
+  enable:
+    - revive
+    - errcheck
+    - staticcheck
+issues:
+  exclude-dirs: [vendor]
